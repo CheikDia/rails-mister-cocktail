@@ -1,14 +1,18 @@
-<h2><%= @cocktail.name %></h2>
-<br>
-<h4>List of ingredients</h4>
-<ul class="list-group">
-  <% @cocktail.doses.each do |dose| %>
-    <li class="list-group-item"><%= dose.description %>:<%= dose.ingredient.name %></li>
-    <%= link_to cocktail_dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
-      <i class="fa fa-trash destroy_dose"></i>
+<div class="col-sm-3 text-center">
+  <h2><%= @cocktail.name %></h2>
+  <%= cl_image_tag @cocktail.photo.key, width: 400, height: 300, crop: :fill %>
+</div>
+<div class="col-sm-3 p-4 text-center">
+  <h4>List of ingredients</h4>
+  <ul class="list-group">
+    <% @cocktail.doses.each do |dose| %>
+      <li class="list-group-item"><%= dose.description %>:<%= dose.ingredient.name %></li>
+      <%= link_to cocktail_dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fa fa-trash destroy_dose"></i>
+      <%end%>
     <%end%>
-  <%end%>
-</ul>
+  </ul>
+<div>
 
 <%= link_to "Back to list", cocktails_path %>
 <br>
