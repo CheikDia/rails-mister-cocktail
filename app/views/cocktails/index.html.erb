@@ -1,9 +1,21 @@
-<h1> The wagon's cocktails... </h1>
+<div class="banner">
+  <div class="background-content">
+    <h1>The wagon's cocktails...</h1>
+    <p>... Bring your coding elixir !</p>
+    <br>
+    <div class="btn btn-warning">
+      <%= link_to "Add yours", new_cocktail_path %>
+    </div>
+  </div>
+</div>
 
-<ul>
-  <% @cocktails.each do |cocktail| %>
-    <li><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
-  <% end %>
-</ul>
-<br>
-<%= link_to "Add new cocktail", new_cocktail_path %>
+<div class="content text-center">
+    <h1>Existing ones:</h1>
+    <div class="row">
+      <% @cocktails.each do |cocktail| %>
+        <div class="col-12 col-md-6 col-lg-3">
+        <%= link_to cocktail.name, cocktail_path(cocktail) %> <%= cl_image_tag cocktail.photo.key, width: 100, height: 75, crop: :fill %>
+        </div>
+      <% end %>
+    </div>
+</div>

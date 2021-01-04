@@ -24,10 +24,8 @@ class CocktailsController < ApplicationController
 
   def update
     @cocktail = Cocktail.find(params[:id])
-    @cocktail.update(restaurant_params)
-
-    # no need for app/views/restaurants/update.html.erb
-    redirect_to cocktail_path(@restaurant)
+    @cocktail.update(cocktail_params)
+    redirect_to cocktail_path(@cocktail)
   end
 
   private
@@ -37,6 +35,6 @@ class CocktailsController < ApplicationController
   end
 
   def cocktail_params
-    params.require(:cocktail).permit(:name)
+    params.require(:cocktail).permit(:name, :photo)
   end
 end
